@@ -1,0 +1,251 @@
+/**
+ * Global Stylesheet
+ * 
+ * Contains:
+ * 1. Tailwind CSS imports (base, components, utilities)
+ * 2. Dark mode configuration (class-based: .dark on <html>)
+ * 3. CSS custom properties (variables) for theme colors and fonts
+ * 4. Custom animations (@keyframes)
+ * 5. Global component styles (.transition-smooth, .text-gradient-primary, etc.)
+ * 
+ * Theme Variables:
+ * - Light mode (default): Light backgrounds, dark text
+ * - Dark mode (.dark class): Dark backgrounds, light text
+ * - Tailwind automatically maps --color-* variables to utility classes
+ *   Example: --color-primary maps to text-primary, bg-primary, etc.
+ */
+
+@import "tailwindcss";
+
+/* Enable class-based dark mode so ThemeToggle.jsx's manual .dark toggle
+   on <html> actually drives any dark: utility variants (e.g. Navbar.jsx). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* Light theme — inverted from dark, light backgrounds + dark text */
+  --font-display: "Poppins", sans-serif;
+  --font-body: "Montserrat", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --radius: 0.625rem;
+
+  --background: #f7f7fa;
+  --foreground: #0b0e14;
+  --card: #ffffff;
+  --card-foreground: #0b0e14;
+  --popover: #ffffff;
+  --popover-foreground: #0b0e14;
+
+  --primary: #facc15;
+  --primary-foreground: #0b0e14;
+
+  --secondary: #f0f0f5;
+  --secondary-foreground: #2a2f3a;
+  --muted: #f0f0f5;
+  --muted-foreground: #6b7280;
+
+  --accent: #25d366;
+  --accent-foreground: #f7f7fa;
+
+  --destructive: #e5484d;
+  --destructive-foreground: #f7f7fa;
+
+  --success: #25d366;
+  --success-foreground: #f7f7fa;
+  --warning: #facc15;
+  --warning-foreground: #0b0e14;
+
+  --border: #e5e7eb;
+  --input: #e5e7eb;
+  --ring: #facc15;
+
+  --chart-1: #facc15;
+  --chart-2: #25d366;
+  --chart-3: #6366f1;
+  --chart-4: #ef4444;
+  --chart-5: #06b6d4;
+
+  --sidebar: #f2f2f7;
+  --sidebar-foreground: #0b0e14;
+  --sidebar-primary: #facc15;
+  --sidebar-primary-foreground: #0b0e14;
+  --sidebar-accent: #ececf2;
+  --sidebar-accent-foreground: #2a2f3a;
+  --sidebar-border: #dcdde3;
+  --sidebar-ring: #facc15;
+}
+
+.dark {
+  /* Dark theme — primary, deep charcoal #0B0E14 with yellow + whatsapp green accents */
+  --background: #0b0e14;
+  --foreground: #f5f6fa;
+  --card: #141822;
+  --card-foreground: #f5f6fa;
+  --popover: #1a1f2b;
+  --popover-foreground: #f5f6fa;
+
+  --primary: #facc15;
+  --primary-foreground: #0b0e14;
+
+  --secondary: #1c2230;
+  --secondary-foreground: #d8dae3;
+  --muted: #1c2230;
+  --muted-foreground: #9aa0ad;
+
+  --accent: #25d366;
+  --accent-foreground: #0b0e14;
+
+  --destructive: #e5484d;
+  --destructive-foreground: #f5f6fa;
+
+  --success: #25d366;
+  --success-foreground: #0b0e14;
+  --warning: #facc15;
+  --warning-foreground: #0b0e14;
+
+  --border: #2a3142;
+  --input: #2a3142;
+  --ring: #facc15;
+
+  --chart-1: #facc15;
+  --chart-2: #25d366;
+  --chart-3: #06b6d4;
+  --chart-4: #ef4444;
+  --chart-5: #8b5cf6;
+
+  --sidebar: #11151d;
+  --sidebar-foreground: #f5f6fa;
+  --sidebar-primary: #facc15;
+  --sidebar-primary-foreground: #0b0e14;
+  --sidebar-accent: #1c2230;
+  --sidebar-accent-foreground: #d8dae3;
+  --sidebar-border: #2a3142;
+  --sidebar-ring: #facc15;
+}
+
+/* Tailwind v4 theme registration — maps the CSS custom properties above to
+   real utility classes (bg-primary, text-foreground, font-display, etc.).
+   Values stay in sync with :root / .dark automatically since these just
+   reference the variables via var(). */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-pill: 9999px;
+
+  --shadow-glow: 0 0 30px -6px rgba(250, 204, 21, 0.45);
+  --shadow-subtle: 0 4px 24px -8px rgba(11, 14, 20, 0.12);
+
+  --animate-spin-slow: spin-slow 12s linear infinite;
+  --animate-pulse-glow: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.transition-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.text-gradient-primary {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-grid {
+  background-image: linear-gradient(to right,
+      rgba(0, 0, 0, 0.08) 1px,
+      transparent 1px), linear-gradient(to bottom, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.glow-primary {
+  box-shadow: 0 0 40px -8px rgba(250, 204, 21, 0.35);
+}
+
+.glow-accent {
+  box-shadow: 0 0 40px -8px rgba(37, 211, 102, 0.35);
+}
