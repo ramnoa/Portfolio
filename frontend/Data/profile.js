@@ -3,6 +3,7 @@
  * Central source for personal information, contact details, and social links.
  * Used throughout the portfolio in Hero, About, Contact, and Footer sections.
  */
+import profileImage from "../src/Assets/images/RAM.jpg";
  export const profile = {
   name: "Noah Ewalan Logong",
   greeting: "Hello I'm",
@@ -15,8 +16,7 @@
   whatsapp: "https://wa.me/254719531290",
   cvUrl: "#",
 
-  profileImage: "/src/assets/images/RAM.jpg",
-
+  profileImage: profileImage,
   social: {
     linkedin: "https://www.linkedin.com/in/noah-logong-053168348/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Be1w9eT8AQW6j%2FBSjSuHT4Q%3D%3D",
     github: "https://github.com/ramnoa",

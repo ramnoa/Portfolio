@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { FaPhone, FaWhatsapp } from "react-icons/fa";
-import { profile } from "../../data/profile.js";
+import { profile } from "../../Data/profile.js";
 import SectionWrapper from "./SectionWrapper";
 
 const API_URL = import.meta.env.VITE_API_URL ?? "http://127.0.0.1:8000";
