@@ -31,7 +31,8 @@ class ContactController extends Controller
         try {
             // The important one — this is you finding out someone contacted you.
             // If this fails, the whole request is treated as a failure.
-            Mail::to(config('mail.from.address'))->send(new ContactMessage($validated));
+            $receiver = config('mail.contact_receiver');
+            Mail::to($receiver)->send(new ContactMessage($validated));
         } catch (\Throwable $e) {
             Log::error('Owner notification mail failed: ' . $e->getMessage());
 

@@ -115,4 +115,17 @@ return [
         'name' => env('MAIL_FROM_NAME', env('APP_NAME', 'Laravel')),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Contact Form Receiver
+    |--------------------------------------------------------------------------
+    |
+    | The email address that receives contact form submissions from the
+    | portfolio. Keep this separate from the sender (MAIL_FROM_ADDRESS)
+    | so the two can be configured independently.
+    |
+    */
+
+    'contact_receiver' => env('CONTACT_RECEIVER_EMAIL', env('MAIL_FROM_ADDRESS', 'hello@example.com')),
+
 ];
